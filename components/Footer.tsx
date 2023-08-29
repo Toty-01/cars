@@ -29,6 +29,19 @@ const Footer = () => {
             </div>
           ))}
         </div>
+        </div>
+        <div className="flex flex-col sm:flex-row justify-between items-center sm:items-start flex-wrap mt-10 border-t border-gray-100 sm:px-16 px-6 py-10">
+      <p className="text-center sm:text-left mb-4 sm:mb-0">
+        @2023 VendonlaCaisse. Tous droits réservés
+      </p>
+          <div className="footer__copyrights-link">
+            <Link href="/">
+              Politique de confidentialité
+            </Link>
+            <Link href="/">
+              Termes de législation
+            </Link>
+          </div>
       </div>
     </footer>
   )
