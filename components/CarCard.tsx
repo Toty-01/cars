@@ -15,6 +15,17 @@ interface CarCardProps {
 const CarCard = ({car} : CarCardProps) => {
   const { city_mpg, year, make, model, transmission, drive } = car;
 
+  const convertMpgToKmpl = (mpg: number) => {
+    const kmPerMile = 1.60934;
+    const litersPerGallon = 3.78541;
+    return (mpg * kmPerMile) / litersPerGallon;
+  };
+
+  // Convertir la valeur city_mpg
+  const city_kmpl = convertMpgToKmpl(city_mpg);
+
+  const [isOpen, setIsOpen] = useState(false);
+
   const carRent = calculateCarRent(city_mpg, year)
 
   return (
@@ -50,9 +61,38 @@ const CarCard = ({car} : CarCardProps) => {
               alt='steering wheel'
             />
             <p className='text-[14px]'>
-              {transmission === 'a' ? 'Automatic' : 'Manual'}
+              {transmission === 'a' ? 'Auto' : 'Manuel'}
+            </p>
+          </div>          
+          <div className="flex flex-col justify-center items-center gap-2">
+            <Image src="/tire.svg" 
+              width={20} 
+              height={20} 
+              alt='steering wheel'
+            />
+            <p className='text-[14px]'>
+              {drive.toLocaleUpperCase()}
+            </p>
+          </div>          
+          <div className="flex flex-col justify-center items-center gap-2">
+            <Image src="/gas.svg" 
+              width={20} 
+              height={20} 
+              alt='steering wheel'
+            />
+            <p className='text-[14px]'>
+              {city_kmpl.toFixed(2)} km/l
             </p>
           </div>
+        </div>
+        <div className="car-card__btn-container">
+          <CustomButton 
+            title='Voir plus'
+            containerStyles='w-full py-[16px] rounded-full bg-primary-blue'
+            textStyles="text-white text-[14px] leading-[17px] font-bold"
+            rightIcon="/right-arrow.svg"
+            handleClick={() =>setIsOpen(true)}
+          />
         </div>
       </div>
     </div>

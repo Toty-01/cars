@@ -21,6 +21,7 @@ const Hero = () => {
         <CustomButton 
          title="Visiter le parking"
          containerStyles="bg-primary-blue text-white rounded-full mt-10"
+         rightIcon="/right-arrow.svg"
          handleClick={handleScroll}
         />
       </div>
